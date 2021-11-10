@@ -9,6 +9,12 @@ import LeadsApp from "./LeadsApp";
 import OwnersApp from "./OwnersApp";
 import MobileDentalReportsApp from './MobileDentalReportsApp';
 import MobileDentalDefaultApp from './MobileDentalDefaultApp';
+import OwnersProfileApp from './OwnersProfileApp';
+import AdminApp from './AdminApp';
+import StateInfoApp from './StateInfoApp';
+import StatewiseFiles from './StatewiseFiles';
+        
+
 
 function App() {
   const [userType, setUserType] = useState("");
@@ -79,8 +85,11 @@ return (
     <Router>
         <Route path="/leadshome" component={LeadsApp} />
         <Route path="/ownershome" component={OwnersApp} />
+        <Route path="/adminshome" component={StateInfoApp} />
         <Route path="/reports" component={MobileDentalReportsApp} />
         <Route path="/default" component={MobileDentalDefaultApp} />
+        <Route path="/ownersprofile" component={OwnersProfileApp} />
+        <Route path="/files" component={StatewiseFiles} />
         
         {fetchCurrentUserGroup}
         {
@@ -90,11 +99,11 @@ return (
           ) : ( 
                 userType == "Bizowners" ? 
                 (
-                  <Redirect to="/ownershome" />
+                  <Redirect to="/ownersprofile" />
                 ): ( 
-                  userType == "Consultants" ? 
+                  userType == "admins" ? 
                   (
-                    <Redirect to="/reports" />
+                    <Redirect to="/adminshome" />
                   ):
                   (
                     <Redirect to="/default" /> 

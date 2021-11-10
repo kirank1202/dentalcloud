@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -6,7 +7,14 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+.container-body {
+  min-height: 600px;
+  margin: 20px 0 0;
+}
+.col-form-label {
+  text-align: right;
+  font-weight: 700;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -15,7 +23,6 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
