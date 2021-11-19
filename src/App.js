@@ -111,7 +111,7 @@ return (
                     <Redirect to="/adminshome" />
                   ):
                   (
-                    <Redirect to="/prospect" /> 
+                    <Redirect to="/prospectDetails" /> 
                     )
                 )
               
