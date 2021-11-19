@@ -60,7 +60,7 @@ function ProspectDetailsApp() {
   }
 
   async function handleCreateProspect() {
-    setCreateProspect(!createProspect);
+   // setCreateProspect(!createProspect);
     if (!formData.lname || !formData.fname) return;
     await API.graphql({ query: createOwnerMutation, variables: { input: formData } });
     setOwner([...owner, formData]);
@@ -123,7 +123,7 @@ function ProspectDetailsApp() {
                           <div class="col-sm-8">
                             <input
                               class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
-                              onChange={e => setFormData({ ...formData, 'lname': e.target.value })}
+                              onChange={e => setFormData({ ...formData, 'businessLicenseNumber': e.target.value })}
                               placeholder="Owner businessLicenseNumber"
                               value={formData?.businessLicenseNumber}
                             />
@@ -137,7 +137,7 @@ function ProspectDetailsApp() {
                           <div class="col-sm-8">
                             <input
                               class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
-                              onChange={e => setFormData({ ...formData, 'lname': e.target.value })}
+                              onChange={e => setFormData({ ...formData, 'street': e.target.value })}
                               placeholder="Owner businessLicenseNumber"
                               value={formData?.street}
                             />
@@ -149,7 +149,7 @@ function ProspectDetailsApp() {
                           <div class="col-sm-8">
                             <input
                               class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
-                              onChange={e => setFormData({ ...formData, 'lname': e.target.value })}
+                              onChange={e => setFormData({ ...formData, 'visionStatement': e.target.value })}
                               placeholder="Owner visionStatement"
                               value={formData?.visionStatement}
                             />
@@ -162,7 +162,7 @@ function ProspectDetailsApp() {
                           <div class="col-sm-8">
                             <input
                               class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
-                              onChange={e => setFormData({ ...formData, 'lname': e.target.value })}
+                              onChange={e => setFormData({ ...formData, 'city': e.target.value })}
                               placeholder="Owner businessLicenseNumber"
                               value={formData?.city}
                             />
@@ -174,7 +174,7 @@ function ProspectDetailsApp() {
                           <div class="col-sm-8">
                             <input
                               class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
-                              onChange={e => setFormData({ ...formData, 'lname': e.target.value })}
+                              onChange={e => setFormData({ ...formData, 'state': e.target.value })}
                               placeholder="Owner businessLicenseNumber"
                               value={formData?.state}
                             />
@@ -186,7 +186,7 @@ function ProspectDetailsApp() {
                           <div class="col-sm-8">
                             <input
                               class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
-                              onChange={e => setFormData({ ...formData, 'lname': e.target.value })}
+                              onChange={e => setFormData({ ...formData, 'zip': e.target.value })}
                               placeholder="Owner businessLicenseNumber"
                               value={formData?.zip}
                             />
