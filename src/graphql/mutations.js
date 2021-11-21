@@ -20,6 +20,9 @@ export const createOwner = /* GraphQL */ `
       businessName
       businessDBAName
       businessLogo
+      businessEmail
+      businessPhone
+      businessURL
       questionnaireId
       practiceType
       mobileClinicType
@@ -34,10 +37,19 @@ export const createOwner = /* GraphQL */ `
       professionalLicenseNumber
       professionalLicenseAcquiredDate
       professionalLicenseExpiryDate
+      financialInstituteName
       primaryDentist
+      primaryDentistPhone
+      primaryDentistEmail
       secondaryDentist
-      lawyer
-      accountant
+      secondaryDentistPhone
+      secondaryDentistEmail
+      lawyerName
+      lawyerPhone
+      lawyerEmail
+      accountantName
+      accountantPhone
+      accountantEmail
       createdAt
       updatedAt
     }
@@ -62,6 +74,9 @@ export const updateOwner = /* GraphQL */ `
       businessName
       businessDBAName
       businessLogo
+      businessEmail
+      businessPhone
+      businessURL
       questionnaireId
       practiceType
       mobileClinicType
@@ -76,10 +91,19 @@ export const updateOwner = /* GraphQL */ `
       professionalLicenseNumber
       professionalLicenseAcquiredDate
       professionalLicenseExpiryDate
+      financialInstituteName
       primaryDentist
+      primaryDentistPhone
+      primaryDentistEmail
       secondaryDentist
-      lawyer
-      accountant
+      secondaryDentistPhone
+      secondaryDentistEmail
+      lawyerName
+      lawyerPhone
+      lawyerEmail
+      accountantName
+      accountantPhone
+      accountantEmail
       createdAt
       updatedAt
     }
@@ -104,6 +128,9 @@ export const deleteOwner = /* GraphQL */ `
       businessName
       businessDBAName
       businessLogo
+      businessEmail
+      businessPhone
+      businessURL
       questionnaireId
       practiceType
       mobileClinicType
@@ -118,10 +145,19 @@ export const deleteOwner = /* GraphQL */ `
       professionalLicenseNumber
       professionalLicenseAcquiredDate
       professionalLicenseExpiryDate
+      financialInstituteName
       primaryDentist
+      primaryDentistPhone
+      primaryDentistEmail
       secondaryDentist
-      lawyer
-      accountant
+      secondaryDentistPhone
+      secondaryDentistEmail
+      lawyerName
+      lawyerPhone
+      lawyerEmail
+      accountantName
+      accountantPhone
+      accountantEmail
       createdAt
       updatedAt
     }

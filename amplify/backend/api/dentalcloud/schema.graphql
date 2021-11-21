@@ -13,6 +13,9 @@ type Owner @model {
   businessName: String
   businessDBAName: String
   businessLogo: String
+  businessEmail: String
+  businessPhone: String
+  businessURL: String
 
   questionnaireId: String
   practiceType: String
@@ -32,10 +35,22 @@ type Owner @model {
   professionalLicenseAcquiredDate: String
   professionalLicenseExpiryDate: String
 
+  financialInstituteName: String
+
+
   primaryDentist: String
+  primaryDentistPhone: String
+  primaryDentistEmail: String
   secondaryDentist: String
-  lawyer: String
-  accountant: String
+  secondaryDentistPhone: String
+  secondaryDentistEmail: String
+  
+  lawyerName: String
+  lawyerPhone: String
+  lawyerEmail: String
+  accountantName: String
+  accountantPhone: String
+  accountantEmail: String
 }
 
 type Questionnaire @model {
