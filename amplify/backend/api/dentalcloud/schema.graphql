@@ -1,18 +1,27 @@
 type Owner @model {
   id: ID!
   ownerID: String
+  role: String
   lname: String
   fname: String
-  businessName: String
-  businessDBAName: String
   street: String
   unit: String
   city: String
   state: String
   zip: String
 
-  primaryDentistName: String
-  secondaryDentistName: String
+  businessName: String
+  businessDBAName: String
+  businessLogo: String
+
+  questionnaireId: String
+  practiceType: String
+  mobileClinicType: String
+
+  missionStatement: String
+  visionStatement: String
+  aboutBusiness: String
+  ownerBiodata: String
 
   businessLicenseNumber: String
   businessLicenseAcquiredDate: String
@@ -23,15 +32,28 @@ type Owner @model {
   professionalLicenseAcquiredDate: String
   professionalLicenseExpiryDate: String
 
-
-
-  missionStatement: String
-  visionStatement: String
-  aboutBusiness: String
-  ownerBiodata: String
+  primaryDentist: String
+  secondaryDentist: String
+  lawyer: String
+  accountant: String
 }
 
-
+type Questionnaire @model {
+  id: ID!
+  questionnaireId: String
+  passion: String
+  othersInterest: String
+  planB: String
+  pricePoint: String
+  competition: String
+  growBusiness: String
+  insuranceNeeds: String
+  costOfEntry: String
+  monthlyLivingExpenses: String
+  readyAndDriven: String
+  additionalNotes1: String
+  additinalNotes2: String
+}
 type State @model {
   id: ID!
   abbreviation: String

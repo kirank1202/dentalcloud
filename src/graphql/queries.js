@@ -6,17 +6,24 @@ export const getOwner = /* GraphQL */ `
     getOwner(id: $id) {
       id
       ownerID
+      role
       lname
       fname
-      businessName
-      businessDBAName
       street
       unit
       city
       state
       zip
-      primaryDentistName
-      secondaryDentistName
+      businessName
+      businessDBAName
+      businessLogo
+      questionnaireId
+      practiceType
+      mobileClinicType
+      missionStatement
+      visionStatement
+      aboutBusiness
+      ownerBiodata
       businessLicenseNumber
       businessLicenseAcquiredDate
       businessLicenseExpiryDate
@@ -24,10 +31,10 @@ export const getOwner = /* GraphQL */ `
       professionalLicenseNumber
       professionalLicenseAcquiredDate
       professionalLicenseExpiryDate
-      missionStatement
-      visionStatement
-      aboutBusiness
-      ownerBiodata
+      primaryDentist
+      secondaryDentist
+      lawyer
+      accountant
       createdAt
       updatedAt
     }
@@ -43,17 +50,24 @@ export const listOwners = /* GraphQL */ `
       items {
         id
         ownerID
+        role
         lname
         fname
-        businessName
-        businessDBAName
         street
         unit
         city
         state
         zip
-        primaryDentistName
-        secondaryDentistName
+        businessName
+        businessDBAName
+        businessLogo
+        questionnaireId
+        practiceType
+        mobileClinicType
+        missionStatement
+        visionStatement
+        aboutBusiness
+        ownerBiodata
         businessLicenseNumber
         businessLicenseAcquiredDate
         businessLicenseExpiryDate
@@ -61,10 +75,61 @@ export const listOwners = /* GraphQL */ `
         professionalLicenseNumber
         professionalLicenseAcquiredDate
         professionalLicenseExpiryDate
-        missionStatement
-        visionStatement
-        aboutBusiness
-        ownerBiodata
+        primaryDentist
+        secondaryDentist
+        lawyer
+        accountant
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getQuestionnaire = /* GraphQL */ `
+  query GetQuestionnaire($id: ID!) {
+    getQuestionnaire(id: $id) {
+      id
+      questionnaireId
+      passion
+      othersInterest
+      planB
+      pricePoint
+      competition
+      growBusiness
+      insuranceNeeds
+      costOfEntry
+      monthlyLivingExpenses
+      readyAndDriven
+      additionalNotes1
+      additinalNotes2
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listQuestionnaires = /* GraphQL */ `
+  query ListQuestionnaires(
+    $filter: ModelQuestionnaireFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listQuestionnaires(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        questionnaireId
+        passion
+        othersInterest
+        planB
+        pricePoint
+        competition
+        growBusiness
+        insuranceNeeds
+        costOfEntry
+        monthlyLivingExpenses
+        readyAndDriven
+        additionalNotes1
+        additinalNotes2
         createdAt
         updatedAt
       }
