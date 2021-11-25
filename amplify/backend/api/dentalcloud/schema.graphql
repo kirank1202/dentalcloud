@@ -67,7 +67,7 @@ type Questionnaire @model {
   monthlyLivingExpenses: String
   readyAndDriven: String
   additionalNotes1: String
-  additinalNotes2: String
+  additionalNotes2: String
 }
 type State @model {
   id: ID!

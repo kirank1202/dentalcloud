@@ -170,7 +170,7 @@ export const onCreateQuestionnaire = /* GraphQL */ `
       monthlyLivingExpenses
       readyAndDriven
       additionalNotes1
-      additinalNotes2
+      additionalNotes2
       createdAt
       updatedAt
     }
@@ -192,7 +192,7 @@ export const onUpdateQuestionnaire = /* GraphQL */ `
       monthlyLivingExpenses
       readyAndDriven
       additionalNotes1
-      additinalNotes2
+      additionalNotes2
       createdAt
       updatedAt
     }
@@ -214,7 +214,7 @@ export const onDeleteQuestionnaire = /* GraphQL */ `
       monthlyLivingExpenses
       readyAndDriven
       additionalNotes1
-      additinalNotes2
+      additionalNotes2
       createdAt
       updatedAt
     }
