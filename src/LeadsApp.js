@@ -18,6 +18,11 @@ async function fetchOwner(){
 
 }
 */
+const initialQualifyFormState = {
+  questionnaireId: "",
+  passion: ""
+}
+
 const initialFormState = {
   ownerID: "",
   lname: "",
@@ -51,16 +56,19 @@ function submitHandler(e) {
 }
 
 
-let jumpstartDisabled = true;
+let jumpstartDisabled = false;
 let licenseDisabled = true;
 let dentistDisabled = true;
 let relationsDisabled = true;
 let marketingDisabled = true;
+let qualifyDisabled = true;
 
 function LeadsApp() {
   let history = useHistory();
   const [owner, setOwner] = useState([]);
   const [formData, setFormData] = useState(initialFormState);
+
+  const [qualifyFormData, setQualifyFormData] = useState(initialQualifyFormState);
   const [createProspect, setCreateProspect] = useState(true);
   const [isLoaded, setIsLoaded] = useState(true);
 
@@ -79,12 +87,37 @@ function LeadsApp() {
     setCreateProspect(!createProspect);
     //if (!formData.lname || !formData.fname) return;
    // alert(`Creating new user- ${formData.fname}`);
-    jumpstartDisabled = false;
+    qualifyDisabled = false;
     await API.graphql({ query: createOwnerMutation, variables: { input: formData } });
     setOwner([...owner, formData]);
     // setFormData(initialFormState);
     alert(`Created ${formData.fname}`);
   }
+
+  async function handleUpdateQualify() {
+    setIsLoaded(false);
+    //setCreateProspect(!createProspect);
+    //if (!formData.lname || !formData.fname) return;
+   // alert(`Creating new user- ${formData.fname}`);
+
+  /* 
+    await API.graphql({
+      query: updateOwner,
+      variables: {
+        input: {
+          id: owner.id,
+          businessName: formData.businessName,
+          businessDBAName: formData.businessDBAName,
+          businessPhone: formData.businessPhone,
+          businessEmail: formData.businessEmail,
+          businessURL: formData.businessURL
+        },
+      },
+    }); 
+  */
+  jumpstartDisabled = false;
+  alert("Qualify information updated");
+  } // setState(initialState);
 
   async function handleUpdateJumpstart() {
     setIsLoaded(false);
@@ -107,6 +140,8 @@ function LeadsApp() {
   });
   alert("Jumpstart information updated");
  } // setState(initialState);
+
+
 
   return (
     <div className="App">
@@ -136,6 +171,7 @@ function LeadsApp() {
                               />
                             </div>
                           </Form.Group>
+                          
                           <Form.Group as={Row} controlId="lnameControl">
                             <Form.Label column sm={4}>Last Name</Form.Label>
                             <div class="col-sm-8">
@@ -220,6 +256,68 @@ function LeadsApp() {
               </Container>
             </Tab>
 
+            <Tab eventKey="qualify" title="0.5: Qualify" disabled={qualifyDisabled}>
+              <Container>    
+              <div class="qualify-tab">   
+              <Row>
+                    <Col sm={9}>
+                      <Form onSubmit={submitHandler}>
+                        <Row className="mb-3">
+                          <Form.Group as={Row} controlId="fnameControl">
+                            <Form.Label column sm={4}>First Name</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'fname': e.target.value })}
+                                placeholder="Owner First Name"
+                                value={formData?.fname}
+                                disabled={!isLoaded}
+                              />
+                            </div>
+                          </Form.Group>
+                          
+                          <Form.Group as={Row} controlId="lnameControl">
+                            <Form.Label column sm={4}>Last Name</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'lname': e.target.value })}
+                                placeholder="Owner Last Name"
+                                value={formData?.lname}
+                                disabled={!isLoaded}
+                              />
+                            </div>
+                          </Form.Group>
+                          <Form.Group as={Row} controlId="passionControl">
+                            <Form.Label column sm={4}>1. ARE YOU ÜBER PASSIONATE ABOUT YOUR BUSINESS IDEA’S SUBJECT MATTER?</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setQualifyFormData({ ...qualifyFormData, 'passion': e.target.value })}
+                                placeholder="Passion Question"
+                                value={qualifyFormData?.passion}
+                                disabled={isLoaded}
+                              />
+                            </div>
+                          </Form.Group>
+
+                          </Row>
+                        <button class="btn btn-primary" onClick={handleUpdateQualify}
+                          disabled={
+                            !(  formData.lname &&
+                                formData.fname 
+                                
+                              ) 
+                          }
+                        > Save and Continue</button>
+                      </Form>
+                    </Col>
+                  </Row>
+                </div>
+
+              </Container>
+            </Tab>
+          
             <Tab eventKey="jumpstart" title="1: JUMP START" disabled={jumpstartDisabled}>
               <Container>    
               <div class="jumpstart-tab">   
@@ -368,6 +466,18 @@ function LeadsApp() {
                             </div>
                           </Form.Group>
 
+                          <Form.Group as={Row} controlId="passionControl">
+                            <Form.Label column sm={4}>1. ARE YOU ÜBER PASSIONATE ABOUT YOUR BUSINESS IDEA’S SUBJECT MATTER?</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setQualifyFormData({ ...qualifyFormData, 'passion': e.target.value })}
+                                placeholder="Passion Question"
+                                value={qualifyFormData?.passion}
+                                disabled={isLoaded}
+                              />
+                            </div>
+                          </Form.Group>
 
                         </Row>
                         <button class="btn btn-primary" onClick={handleUpdateJumpstart}
@@ -399,15 +509,15 @@ function LeadsApp() {
               </div>
               </Container>
             </Tab>
-
+            {/*}
             <Tab eventKey="dentist" title="3: DENTIST" disabled={dentistDisabled}>
               <Container>    
               <div class="dentist-tab">   
               </div>
               </Container>
             </Tab>
-
-            <Tab eventKey="relations" title="4: BUSINESS RELATIONSHIPS" disabled={relationsDisabled}>
+                        */}
+            <Tab eventKey="relations" title="4: Contracts" disabled={relationsDisabled}>
               <Container>    
               <div class="relations-tab">   
               </div>     
