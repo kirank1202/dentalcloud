@@ -126,7 +126,7 @@ export const getQuestionnaire = /* GraphQL */ `
       monthlyLivingExpenses
       readyAndDriven
       additionalNotes1
-      additinalNotes2
+      additionalNotes2
       createdAt
       updatedAt
     }
@@ -153,7 +153,7 @@ export const listQuestionnaires = /* GraphQL */ `
         monthlyLivingExpenses
         readyAndDriven
         additionalNotes1
-        additinalNotes2
+        additionalNotes2
         createdAt
         updatedAt
       }
