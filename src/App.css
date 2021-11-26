@@ -121,6 +121,26 @@
   padding: 70px 1.25em 1.25em;
   z-index: 1;
 }
+.lead-sidebar {
+  border: 0;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  border-radius: 6px;
+  color: rgba(0,0,0,.87);
+  background: #fff;
+  width: 100%;
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+  flex: 1 1 auto;
+  padding: 1.25em 1.25em;
+  z-index: 1;
+}
+
+.container {
+  padding: 50px 0 0;
+}
+.form-check {
+  text-align: left;
+}
 .App-link {
   color: #61dafb;
 }

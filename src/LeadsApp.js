@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import logo from './logo.svg';
-import './Owners.css';
+import './Leads.css';
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
@@ -88,11 +88,28 @@ function LeadsApp() {
 
   const [createProspect, setCreateProspect] = useState(true);
   const [isLoaded, setIsLoaded] = useState(true);
+  const [isVideoOneON, setVideoOneON ] = useState(true);
+  const [isVideoTwoON, setVideoTwoON ] = useState(false);
+  const [isVideoThreeON, setVideoThreeON ] = useState(false);
 
   useEffect(() => {
     // fetchOwner();
   }, []);
 
+ const selectVideo = (val) => {
+    setVideoOneON(false);
+    setVideoTwoON(false);
+    setVideoThreeON(false);
+    if(val ==="1") {
+      setVideoOneON(true);
+    }
+    if(val ==="2") {
+      setVideoTwoON(true);
+    }
+    if(val ==="3") {
+      setVideoThreeON(true);
+    }
+  }
   async function fetchOwner() {
     const apiData = await API.graphql({ query: listOwners });
     setOwner(apiData.data.listOwners.items);
@@ -281,6 +298,53 @@ function LeadsApp() {
                           }
                         > Save and Continue</button>
                       </Form>
+                    </Col>
+                    <Col sm={3}>
+                    {isVideoOneON}
+                    <Form.Check
+                        type="radio"
+                        defaultChecked={isVideoOneON}
+                        label="First Video"
+                        name="formHorizontalRadios"
+                        id="formHorizontalRadios1"
+                        onChange= {() => selectVideo("1")}
+                      />
+                      {isVideoTwoON}
+                      <Form.Check
+                        type="radio"
+                        defaultChecked={isVideoTwoON}
+                        label="Second Video"
+                        name="formHorizontalRadios"
+                        id="formHorizontalRadios2"
+                        onChange= {() => selectVideo("2")}
+                      />
+                      {isVideoThreeON}
+                      <Form.Check
+                        type="radio"
+                        defaultChecked={isVideoThreeON}
+                        label="Third Video"
+                        name="formHorizontalRadios"
+                        id="formHorizontalRadios3"
+                        onChange= {() => selectVideo("3")}
+                      />
+                      {isVideoOneON ? <div class="lead-sidebar card">
+                        <span class='description'>Please click on the video1 to watch the fundamentals of starting mobile dentistry</span>
+                        <iframe width="100%"  src="https://www.youtube.com/embed/7poSoylCwD0">
+                        </iframe>
+                      </div> :""
+                      }
+                      {isVideoTwoON ? <div class="lead-sidebar card">
+                        <span class='description'>Please click on the video2 to watch the fundamentals of starting mobile dentistry</span>
+                        <iframe width="100%"  src="https://www.youtube.com/embed/7poSoylCwD0">
+                        </iframe>
+                      </div> :""
+                      }
+                      {isVideoThreeON ? <div class="lead-sidebar card">
+                        <span class='description'>Please click on the video3 to watch the fundamentals of starting mobile dentistry</span>
+                        <iframe width="100%"  src="https://www.youtube.com/embed/7poSoylCwD0">
+                        </iframe>
+                      </div>:""
+                      }
                     </Col>
                   </Row>
                 </div>
@@ -488,6 +552,53 @@ function LeadsApp() {
                         > Save and Continue</button>
                       </Form>
                     </Col>
+                    <Col sm={3}>
+                    {isVideoOneON}
+                    <Form.Check
+                        type="radio"
+                        defaultChecked={isVideoOneON}
+                        label="First Video"
+                        name="formHorizontalRadios"
+                        id="formHorizontalRadios4"
+                        onChange= {() => selectVideo("1")}
+                      />
+                      {isVideoTwoON}
+                      <Form.Check
+                        type="radio"
+                        defaultChecked={isVideoTwoON}
+                        label="Second Video"
+                        name="formHorizontalRadios"
+                        id="formHorizontalRadios5"
+                        onChange= {() => selectVideo("2")}
+                      />
+                      {isVideoThreeON}
+                      <Form.Check
+                        type="radio"
+                        defaultChecked={isVideoThreeON}
+                        label="Third Video"
+                        name="formHorizontalRadios"
+                        id="formHorizontalRadios6"
+                        onChange= {() => selectVideo("3")}
+                      />
+                      {isVideoOneON ? <div class="lead-sidebar card">
+                        <span class='description'>Please click on the video1 to watch the fundamentals of starting mobile dentistry</span>
+                        <iframe width="100%"  src="https://www.youtube.com/embed/7poSoylCwD0">
+                        </iframe>
+                      </div> :""
+                      }
+                      {isVideoTwoON ? <div class="lead-sidebar card">
+                        <span class='description'>Please click on the video2 to watch the fundamentals of starting mobile dentistry</span>
+                        <iframe width="100%"  src="https://www.youtube.com/embed/7poSoylCwD0">
+                        </iframe>
+                      </div> :""
+                      }
+                      {isVideoThreeON ? <div class="lead-sidebar card">
+                        <span class='description'>Please click on the video3 to watch the fundamentals of starting mobile dentistry</span>
+                        <iframe width="100%"  src="https://www.youtube.com/embed/7poSoylCwD0">
+                        </iframe>
+                      </div>:""
+                      }
+                    </Col>
                   </Row>
                 </div>
 
@@ -673,6 +784,53 @@ function LeadsApp() {
                           }
                         > Save and Continue</button>
                       </Form>
+                    </Col>
+                    <Col sm={3}>
+                    {isVideoOneON}
+                    <Form.Check
+                        type="radio"
+                        defaultChecked={isVideoOneON}
+                        label="First Video"
+                        name="formHorizontalRadios"
+                        id="formHorizontalRadios1"
+                        onChange= {() => selectVideo("1")}
+                      />
+                      {isVideoTwoON}
+                      <Form.Check
+                        type="radio"
+                        defaultChecked={isVideoTwoON}
+                        label="Second Video"
+                        name="formHorizontalRadios"
+                        id="formHorizontalRadios2"
+                        onChange= {() => selectVideo("2")}
+                      />
+                      {isVideoThreeON}
+                      <Form.Check
+                        type="radio"
+                        defaultChecked={isVideoThreeON}
+                        label="Third Video"
+                        name="formHorizontalRadios"
+                        id="formHorizontalRadios3"
+                        onChange= {() => selectVideo("3")}
+                      />
+                      {isVideoOneON ? <div class="lead-sidebar card">
+                        <span class='description'>Please click on the video1 to watch the fundamentals of starting mobile dentistry</span>
+                        <iframe width="100%"  src="https://www.youtube.com/embed/7poSoylCwD0">
+                        </iframe>
+                      </div> :""
+                      }
+                      {isVideoTwoON ? <div class="lead-sidebar card">
+                        <span class='description'>Please click on the video2 to watch the fundamentals of starting mobile dentistry</span>
+                        <iframe width="100%"  src="https://www.youtube.com/embed/7poSoylCwD0">
+                        </iframe>
+                      </div> :""
+                      }
+                      {isVideoThreeON ? <div class="lead-sidebar card">
+                        <span class='description'>Please click on the video3 to watch the fundamentals of starting mobile dentistry</span>
+                        <iframe width="100%"  src="https://www.youtube.com/embed/7poSoylCwD0">
+                        </iframe>
+                      </div>:""
+                      }
                     </Col>
                   </Row>
                 </div>   
