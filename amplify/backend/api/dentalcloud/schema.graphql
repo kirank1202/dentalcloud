@@ -2,6 +2,7 @@ type Owner @model {
   id: ID!
   ownerID: String
   role: String
+  status: String
   lname: String
   fname: String
   street: String

@@ -10,6 +10,7 @@ export const createOwner = /* GraphQL */ `
       id
       ownerID
       role
+      status
       lname
       fname
       street
@@ -64,6 +65,7 @@ export const updateOwner = /* GraphQL */ `
       id
       ownerID
       role
+      status
       lname
       fname
       street
@@ -118,6 +120,7 @@ export const deleteOwner = /* GraphQL */ `
       id
       ownerID
       role
+      status
       lname
       fname
       street

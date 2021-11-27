@@ -7,6 +7,7 @@ export const getOwner = /* GraphQL */ `
       id
       ownerID
       role
+      status
       lname
       fname
       street
@@ -63,6 +64,7 @@ export const listOwners = /* GraphQL */ `
         id
         ownerID
         role
+        status
         lname
         fname
         street
