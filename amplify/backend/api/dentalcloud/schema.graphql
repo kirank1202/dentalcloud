@@ -36,6 +36,16 @@ type Owner @model {
   professionalLicenseAcquiredDate: String
   professionalLicenseExpiryDate: String
 
+  hygieneAssociationMembership: String
+  hygieneAssociationMembershipExpiryDate: String
+  aDAMembership: String
+  aDAMembershipExpiryDate: String
+  continuingEducationHours: String
+  continuingEducationHoursExpiryDate: String
+  cPRNumber: String
+  cPRNumberExpiryDate: String
+
+
   financialInstituteName: String
 
 
@@ -52,6 +62,15 @@ type Owner @model {
   accountantName: String
   accountantPhone: String
   accountantEmail: String
+
+  websiteDesigner: String
+  websiteSupport: String
+
+  targetMarket: String
+  socialMediaMarketing: String
+  oldfashionedMarketing: String
+  businessReviewsURL: String
+
 }
 
 type Questionnaire @model {

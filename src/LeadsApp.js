@@ -40,6 +40,7 @@ const initialQualifyFormState = {
 
 const initialFormState = {
   ownerID: "",
+  status: 0,
   lname: "",
   fname: "",
   businessName: "",
@@ -64,8 +65,26 @@ const initialFormState = {
   ownerBiodata: "",
   businessEmail: "",
   businessPhone: "",
-  businessURL: ""
+  businessURL: "",
+
+  primaryDentist: "",
+  primaryDentistPhone: "",
+  primaryDentistEmail: "",
+  secondaryDentist: "",
+  secondaryDentistPhone: "",
+  secondaryDentistEmail: "", 
+  lawyerName: "",
+  lawyerPhone: "",
+  lawyerEmail: "",
+  accountantName: "",
+  accountantPhone: "",
+  accountantEmail: "",
+  targetMarket: "",
+  socialMediaMarketing: "",
+  oldfashionedMarketing: "",
+  businessReviewsURL: ""
 };
+
 function submitHandler(e) {
   e.preventDefault();
 }
@@ -192,7 +211,84 @@ function LeadsApp() {
   alert("Jumpstart information updated");
  } // setState(initialState);
 
+async function handleUpdateLicenses(){
+  setIsLoaded(false);
+  setCreateProspect(!createProspect);
+   //if (!formData.lname || !formData.fname) return;
+   licenseDisabled = false;
+   statusCode = 4; 
+  await API.graphql({
+    query: updateOwner,
+    variables: {
+      input: {
+        id: owner.id,
+        businessLicenseNumber: formData.businessLicenseNumber,
+        businessLicenseAcquiredDate: formData.businessLicenseAcquiredDate,
+        businessLicenseExpiryDate: formData.businessLicenseExpiryDate,        
+        professionalLicenseName: formData.professionalLicenseName,
+        professionalLicenseNumber: formData.professionalLicenseNumber,
+        professionalLicenseAcquiredDate: formData.professionalLicenseAcquiredDate,
+        professionalLicenseExpiryDate: formData.professionalLicenseExpiryDate
+      },
+    },
+  });
 
+  alert(`License Information updated for - ${formData.fname}`);
+ // alert("License information updated");
+  
+} //License updates handled
+
+async function handleUpdateContracts(){
+  setIsLoaded(false);
+  setCreateProspect(!createProspect);
+   //if (!formData.lname || !formData.fname) return;
+   // alert(`Creating new user- ${formData.fname}`);
+   statusCode = 5; 
+  await API.graphql({
+    query: updateOwner,
+    variables: {
+      input: {
+        id: owner.id,
+        primaryDentist: formData.primaryDentist,
+        primaryDentistPhone: formData.primaryDentistPhone,
+        primaryDentistEmail: formData.primaryDentistEmail,
+        secondaryDentist: formData.secondaryDentist,
+        secondaryDentistPhone: formData.secondaryDentistPhone,
+        secondaryDentistEmail: formData.secondaryDentistEmail,       
+        lawyerName: formData.lawyerName,
+        lawyerPhone: formData.lawyerPhone,
+        lawyerEmail: formData.lawyerEmail,
+        accountantName: formData.accountantName,
+        accountantPhone: formData.accountantPhone,
+        accountantEmail: formData.accountantEmail
+      }
+    }
+  });
+ alert("Contract information updated");
+  
+} //Contract updates handled
+
+async function handleUpdateMarketing() {
+  setIsLoaded(false);
+  setCreateProspect(!createProspect);
+  //if (!formData.lname || !formData.fname) return;
+ // alert(`Creating new user- ${formData.fname}`);
+  licenseDisabled = false;
+  statusCode = 6; 
+await API.graphql({
+  query: updateOwner,
+  variables: {
+    input: {
+      id: owner.id,
+      targetMarket: formData.targetMarket,
+      socialMediaMarketing: formData.socialMediaMarketing,
+      oldfashionedMarketing: formData.oldfashionedMarketing,
+      businessReviewsURL: formData.businessReviewsURL
+    },
+  },
+});
+alert("Marketing information updated");
+} // setState(initialState);
 
   return (
     <div className="App">
@@ -737,7 +833,7 @@ function LeadsApp() {
                               <input
                                 class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
                                 onChange={e => setFormData({ ...formData, 'businessPhone': e.target.value })}
-                                placeholder="Enter Business URL Address"
+                                placeholder="Enter Business Phone"
                                 value={formData?.businessPhone}
                                 disabled={isLoaded}
                               />
@@ -749,7 +845,7 @@ function LeadsApp() {
                               <input
                                 class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
                                 onChange={e => setFormData({ ...formData, 'businessEmail': e.target.value })}
-                                placeholder="Enter Business URL Address"
+                                placeholder="Enter Business Email"
                                 value={formData?.businessEmail}
                                 disabled={isLoaded}
                               />
@@ -831,6 +927,132 @@ function LeadsApp() {
             <Tab eventKey="license" title="3: LICENSES" disabled={statusCode < 3}>
               <Container>    
               <div class="license-tab">   
+
+                  <Row>
+                    <Col sm={9}>
+                      <Form onSubmit={submitHandler}>
+                        <Row className="mb-3">
+                          <Form.Group as={Row} controlId="fnameControl">
+                            <Form.Label column sm={4}>First Name</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'fname': e.target.value })}
+                                placeholder="Owner First Name"
+                                value={formData?.fname}
+                                disabled={true}
+                              />
+                            </div>
+                          </Form.Group>
+                          <Form.Group as={Row} controlId="lnameControl">
+                            <Form.Label column sm={4}>Last Name</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'lname': e.target.value })}
+                                placeholder="Owner Last Name"
+                                value={formData?.lname}
+                                disabled={true}
+                              />
+                            </div>
+                          </Form.Group>
+                          <Form.Group as={Row} controlId="businessLicenseNumbercontrol">
+                            <Form.Label column sm={4}>Business License Number</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'businessLicenseNumber': e.target.value })}
+                                placeholder="Business License Number"
+                                value={formData?.businessLicenseNumber}
+                              />
+                            </div>
+                          </Form.Group>
+                          <Form.Group as={Row} controlId="businessLicenseAcquiredDatecontrol">
+                            <Form.Label column sm={4}>Acquired Date</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'businessLicenseAcquiredDate': e.target.value })}
+                                placeholder="Business License Acquired Date"
+                                value={formData?.businessLicenseAcquiredDate}
+                              />
+                            </div>
+                          </Form.Group>
+                          <Form.Group as={Row} controlId="businessLicenseExpiryDatecontrol">
+                            <Form.Label column sm={4}>Expiry Date</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'businessLicenseExpiryDate': e.target.value })}
+                                placeholder="Busienss License Expiry Date"
+                                value={formData?.businessLicenseExpiryDate}
+                              />
+                            </div>
+                          </Form.Group>
+                          <Form.Group as={Row} controlId="professionalLicenseNamecontrol">
+                            <Form.Label column sm={4}>Professional License Name</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'professionalLicenseName': e.target.value })}
+                                placeholder="Professional License Name"
+                                value={formData?.professionalLicenseName}
+                              />
+                            </div>
+                          </Form.Group>
+                          <Form.Group as={Row} controlId="professionalLicenseNumbercontrol">
+                            <Form.Label column sm={4}>Professional License Number</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'professionalLicenseNumber': e.target.value })}
+                                placeholder="Professional License Number"
+                                value={formData?.professionalLicenseNumber}
+                              />
+                            </div>
+                          </Form.Group>
+                          <Form.Group as={Row} controlId="professionalLicenseAcquiredDatecontrol">
+                            <Form.Label column sm={4}>Acquired Dated</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'professionalLicenseAcquiredDate': e.target.value })}
+                                placeholder="Professional License Acquired Date"
+                                value={formData?.professionalLicenseAcquiredDate}
+                              />
+                            </div>
+                          </Form.Group>
+                          <Form.Group as={Row} controlId="professionalLicenseExpiryDatecontrol">
+                            <Form.Label column sm={4}>Expiry Dated</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'professionalLicenseExpiryDate': e.target.value })}
+                                placeholder="Professional License Expiry Date"
+                                value={formData?.professionalLicenseExpiryDate}
+                              />
+                            </div>
+                          </Form.Group>
+                        </Row>
+                        <button class="btn btn-primary" onClick={handleUpdateLicenses}
+                            disabled={
+                              !( // formData.lname &&
+                                  // formData.fname &&
+                                  
+                                  formData.businessLicenseNumber &&
+                                  formData.businessLicenseAcquiredDate &&
+                                  formData.businessLicenseExpiryDate &&                                  
+                                  formData.professionalLicenseName &&
+                                  formData.professionalLicenseNumber &&
+                                  formData.professionalLicenseAcquiredDate &&
+                                  formData.professionalLicenseExpiryDate
+                                // isLoaded
+                                ) 
+                            }
+                        > Save and Continue</button>
+                      </Form>
+                    </Col>
+                  </Row>
               </div>
               </Container>
             </Tab>
@@ -842,18 +1064,295 @@ function LeadsApp() {
               </Container>
             </Tab>
                         */}
-            <Tab eventKey="relations" title="4: Contracts" disabled={statusCode < 4}>
+            <Tab eventKey="contracts" title="4: Contracts" disabled={statusCode < 4}>
               <Container>    
-              <div class="relations-tab">   
+              <div class="contracts-tab">   
+
+              <Row>
+                    <Col sm={9}>
+                      <Form onSubmit={submitHandler}>
+                        <Row className="mb-3">
+                          <Form.Group as={Row} controlId="fnameControl">
+                            <Form.Label column sm={4}>First Name</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'fname': e.target.value })}
+                                placeholder="Owner First Name"
+                                value={formData?.fname}
+                                disabled={true}
+                              />
+                            </div>
+                          </Form.Group>
+                          <Form.Group as={Row} controlId="lnameControl">
+                            <Form.Label column sm={4}>Last Name</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'lname': e.target.value })}
+                                placeholder="Owner Last Name"
+                                value={formData?.lname}
+                                disabled={true}
+                              />
+                            </div>
+                          </Form.Group>
+                          <Form.Group as={Row} controlId="primaryDentistcontrol">
+                            <Form.Label column sm={4}>Primary Dentist Name</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'primaryDentist': e.target.value })}
+                                placeholder="Primary Dentist Name"
+                                value={formData?.primaryDentist}
+                              />
+                            </div>
+                          </Form.Group>
+                          <Form.Group as={Row} controlId="primaryDentistPhonecontrol">
+                            <Form.Label column sm={4}>Primary Dentist Phone </Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'primaryDentistPhone': e.target.value })}
+                                placeholder="primaryDentistPhone"
+                                value={formData?.primaryDentistPhone}
+                              />
+                            </div>
+                          </Form.Group>
+                          <Form.Group as={Row} controlId="primaryDentistEmailcontrol">
+                            <Form.Label column sm={4}>Primary dentist Email</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'primaryDentistEmail': e.target.value })}
+                                placeholder="primaryDentistEmail"
+                                value={formData?.primaryDentistEmail}
+                              />
+                            </div>
+                          </Form.Group>
+                          <Form.Group as={Row} controlId="secondaryDentistcontrol">
+                            <Form.Label column sm={4}>Secondary Dentist</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'secondaryDentist': e.target.value })}
+                                placeholder="Professional License Name"
+                                value={formData?.secondaryDentist}
+                              />
+                            </div>
+                          </Form.Group>
+                          <Form.Group as={Row} controlId="secondaryDentistPhonecontrol">
+                            <Form.Label column sm={4}> Secondary Dentist Phone</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'secondaryDentistPhone': e.target.value })}
+                                placeholder="Secondary Dentist Phone"
+                                value={formData?.secondaryDentistPhone}
+                              />
+                            </div>
+                          </Form.Group>
+                          <Form.Group as={Row} controlId="secondaryDentistEmailcontrol">
+                            <Form.Label column sm={4}>Secondary Dentist Email</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'secondaryDentistEmail': e.target.value })}
+                                placeholder="Secondary Dentist Email"
+                                value={formData?.secondaryDentistEmail}
+                              />
+                            </div>
+                          </Form.Group>
+                          <Form.Group as={Row} controlId="lawyerNamecontrol">
+                            <Form.Label column sm={4}>Lawyer Name</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'lawyerName': e.target.value })}
+                                placeholder="Lawyer Name"
+                                value={formData?.lawyerName}
+                              />
+                            </div>
+                          </Form.Group>
+                          <Form.Group as={Row} controlId="lawyerPhonecontrol">
+                            <Form.Label column sm={4}>Lawyer Phone</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'lawyerPhone': e.target.value })}
+                                placeholder="Lawyer Phone"
+                                value={formData?.lawyerPhone}
+                              />
+                            </div>
+                          </Form.Group>
+                          <Form.Group as={Row} controlId="lawyerEmailcontrol">
+                            <Form.Label column sm={4}>Lawyer Email</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'lawyerEmail': e.target.value })}
+                                placeholder="Lawyer Email"
+                                value={formData?.lawyerEmail}
+                              />
+                            </div>
+                          </Form.Group>
+                          <Form.Group as={Row} controlId="accountantNamecontrol">
+                            <Form.Label column sm={4}>Accountant Name</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'accountantName': e.target.value })}
+                                placeholder="Accountant Name"
+                                value={formData?.accountantName}
+                              />
+                            </div>
+                          </Form.Group>
+                          <Form.Group as={Row} controlId="accountantPhonecontrol">
+                            <Form.Label column sm={4}>Accountant Phone</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'accountantPhone': e.target.value })}
+                                placeholder="Accountant Phone"
+                                value={formData?.accountantPhone}
+                              />
+                            </div>
+                          </Form.Group>
+                          <Form.Group as={Row} controlId="accountantEmailcontrol">
+                            <Form.Label column sm={4}>Accountant Email</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'accountantEmail': e.target.value })}
+                                placeholder="Accountant Email"
+                                value={formData?.accountantEmail}
+                              />
+                            </div>
+                          </Form.Group>
+                          
+                        </Row>
+                        <button class="btn btn-primary" onClick={handleUpdateContracts}
+                            disabled={
+                              !( // formData.lname &&
+                                  // formData.fname &&
+                                  formData.primaryDentist && 
+                                  formData.primaryDentistPhone &&
+                                  formData.primaryDentistEmail &&
+                                  formData.secondaryDentist &&
+                                  formData.secondaryDentistPhone &&
+                                  formData.secondaryDentistEmail &&                                  
+                                  formData.lawyerName &&
+                                  formData.lawyerPhone &&
+                                  formData.lawyerEmail &&
+                                  formData.accountantName &&
+                                  formData.accountantPhone &&
+                                  formData.accountantEmail
+                                // isLoaded
+                                ) 
+                            }
+                        > Save and Continue</button>
+                      </Form>
+                    </Col>
+                  </Row>
               </div>     
               </Container>
             </Tab>
 
             <Tab eventKey="marketing" title="5: MARKETING" disabled={statusCode <5}>
               <Container> 
-              <div class="marketing-tab">   
-              </div>
-  
+                <div class="marketing-tab">   
+
+                  <Row>
+                    <Col sm={9}>
+                      <Form onSubmit={submitHandler}>
+                        <Row className="mb-3">
+                          <Form.Group as={Row} controlId="fnameControl">
+                            <Form.Label column sm={4}>First Name</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'fname': e.target.value })}
+                                placeholder="Owner First Name"
+                                value={formData?.fname}
+                                disabled={true}
+                              />
+                            </div>
+                          </Form.Group>
+                          <Form.Group as={Row} controlId="lnameControl">
+                            <Form.Label column sm={4}>Last Name</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'lname': e.target.value })}
+                                placeholder="Owner Last Name"
+                                value={formData?.lname}
+                                disabled={true}
+                              />
+                            </div>
+                          </Form.Group>
+                          <Form.Group as={Row} controlId="targetMarketcontrol">
+                            <Form.Label column sm={4}>Target Market</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'targetMarket': e.target.value })}
+                                placeholder="What is your Target Market"
+                                value={formData?.targetMarket}
+                              />
+                            </div>
+                          </Form.Group>
+                          <Form.Group as={Row} controlId="socialMediaMarketingcontrol">
+                            <Form.Label column sm={4}>Social Media Marketing Preferences</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'socialMediaMarketing': e.target.value })}
+                                placeholder="Social Media Marketing Preferences"
+                                value={formData?.socialMediaMarketing}
+                                
+                              />
+                            </div>
+                          </Form.Group>
+                          <Form.Group as={Row} controlId="oldfashionedMarketing">
+                            <Form.Label column sm={4}>Traditional Marketing Preferences</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'oldfashionedMarketing': e.target.value })}
+                                placeholder="Traditional Marketing Preferences"
+                                value={formData?.oldfashionedMarketing}
+                                
+                              />
+                            </div>
+                          </Form.Group>
+                          <Form.Group as={Row} controlId="businessReviewsURLcontrol">
+                            <Form.Label column sm={4}>Business Reviews Website URL</Form.Label>
+                            <div class="col-sm-8">
+                              <input
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'businessReviewsURL': e.target.value })}
+                                placeholder="Business Reviews Website URL"
+                                value={formData?.businessReviewsURL}
+                              />
+                            </div>
+                          </Form.Group>
+                          </Row>
+                          <button class="btn btn-primary" onClick={handleUpdateMarketing}
+                            disabled={
+                              !(  // formData.lname &&
+                                  // formData.fname &&
+                                  formData.targetMarket &&
+                                  formData.socialMediaMarketing &&
+                                  formData.oldfashionedMarketing &&
+                                  formData.businessReviewsURL
+                                // isLoaded
+                                ) 
+                            }
+                          > Save and Continue</button>
+
+                      </Form>
+                    </Col>
+                  </Row>
+                </div>
               </Container>
             </Tab>
             

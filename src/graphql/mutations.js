@@ -38,6 +38,14 @@ export const createOwner = /* GraphQL */ `
       professionalLicenseNumber
       professionalLicenseAcquiredDate
       professionalLicenseExpiryDate
+      hygieneAssociationMembership
+      hygieneAssociationMembershipExpiryDate
+      aDAMembership
+      aDAMembershipExpiryDate
+      continuingEducationHours
+      continuingEducationHoursExpiryDate
+      cPRNumber
+      cPRNumberExpiryDate
       financialInstituteName
       primaryDentist
       primaryDentistPhone
@@ -51,6 +59,12 @@ export const createOwner = /* GraphQL */ `
       accountantName
       accountantPhone
       accountantEmail
+      websiteDesigner
+      websiteSupport
+      targetMarket
+      socialMediaMarketing
+      oldfashionedMarketing
+      businessReviewsURL
       createdAt
       updatedAt
     }
@@ -93,6 +107,14 @@ export const updateOwner = /* GraphQL */ `
       professionalLicenseNumber
       professionalLicenseAcquiredDate
       professionalLicenseExpiryDate
+      hygieneAssociationMembership
+      hygieneAssociationMembershipExpiryDate
+      aDAMembership
+      aDAMembershipExpiryDate
+      continuingEducationHours
+      continuingEducationHoursExpiryDate
+      cPRNumber
+      cPRNumberExpiryDate
       financialInstituteName
       primaryDentist
       primaryDentistPhone
@@ -106,6 +128,12 @@ export const updateOwner = /* GraphQL */ `
       accountantName
       accountantPhone
       accountantEmail
+      websiteDesigner
+      websiteSupport
+      targetMarket
+      socialMediaMarketing
+      oldfashionedMarketing
+      businessReviewsURL
       createdAt
       updatedAt
     }
@@ -148,6 +176,14 @@ export const deleteOwner = /* GraphQL */ `
       professionalLicenseNumber
       professionalLicenseAcquiredDate
       professionalLicenseExpiryDate
+      hygieneAssociationMembership
+      hygieneAssociationMembershipExpiryDate
+      aDAMembership
+      aDAMembershipExpiryDate
+      continuingEducationHours
+      continuingEducationHoursExpiryDate
+      cPRNumber
+      cPRNumberExpiryDate
       financialInstituteName
       primaryDentist
       primaryDentistPhone
@@ -161,6 +197,12 @@ export const deleteOwner = /* GraphQL */ `
       accountantName
       accountantPhone
       accountantEmail
+      websiteDesigner
+      websiteSupport
+      targetMarket
+      socialMediaMarketing
+      oldfashionedMarketing
+      businessReviewsURL
       createdAt
       updatedAt
     }

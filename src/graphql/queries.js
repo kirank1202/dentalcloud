@@ -35,6 +35,14 @@ export const getOwner = /* GraphQL */ `
       professionalLicenseNumber
       professionalLicenseAcquiredDate
       professionalLicenseExpiryDate
+      hygieneAssociationMembership
+      hygieneAssociationMembershipExpiryDate
+      aDAMembership
+      aDAMembershipExpiryDate
+      continuingEducationHours
+      continuingEducationHoursExpiryDate
+      cPRNumber
+      cPRNumberExpiryDate
       financialInstituteName
       primaryDentist
       primaryDentistPhone
@@ -48,6 +56,12 @@ export const getOwner = /* GraphQL */ `
       accountantName
       accountantPhone
       accountantEmail
+      websiteDesigner
+      websiteSupport
+      targetMarket
+      socialMediaMarketing
+      oldfashionedMarketing
+      businessReviewsURL
       createdAt
       updatedAt
     }
@@ -92,6 +106,14 @@ export const listOwners = /* GraphQL */ `
         professionalLicenseNumber
         professionalLicenseAcquiredDate
         professionalLicenseExpiryDate
+        hygieneAssociationMembership
+        hygieneAssociationMembershipExpiryDate
+        aDAMembership
+        aDAMembershipExpiryDate
+        continuingEducationHours
+        continuingEducationHoursExpiryDate
+        cPRNumber
+        cPRNumberExpiryDate
         financialInstituteName
         primaryDentist
         primaryDentistPhone
@@ -105,6 +127,12 @@ export const listOwners = /* GraphQL */ `
         accountantName
         accountantPhone
         accountantEmail
+        websiteDesigner
+        websiteSupport
+        targetMarket
+        socialMediaMarketing
+        oldfashionedMarketing
+        businessReviewsURL
         createdAt
         updatedAt
       }
