@@ -1360,6 +1360,7 @@ alert("Marketing information updated");
           </Tabs>
         </div>
       </div>
+      <AmplifySignOut /> 
     </div>
 
   );
@@ -1367,4 +1368,5 @@ alert("Marketing information updated");
 
 
 
-export default LeadsApp;
+//export default LeadsApp;
+export default withAuthenticator(LeadsApp)

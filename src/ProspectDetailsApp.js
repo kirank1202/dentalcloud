@@ -90,7 +90,7 @@ function ProspectDetailsApp() {
               </div>
               </Container>
             </Tab>
-            <Tab eventKey="third" title="Mobile Dentistry">
+            <Tab eventKey="third" title="Mobile Dentistry Education">
             <Container>
               <div class="register-container card">
                 <span class='description'>Please click on the video to watch the fundamentals of starting mobile dentistry</span>
@@ -213,6 +213,7 @@ function ProspectDetailsApp() {
           </Tabs>
         </div>
       </div>
+     
     </div>
 
   );
@@ -221,3 +222,5 @@ function ProspectDetailsApp() {
 
 
 export default ProspectDetailsApp;
+
+//export default withAuthenticator(ProspectDetailsApp);
