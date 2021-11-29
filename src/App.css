@@ -134,7 +134,30 @@
   padding: 1.25em 1.25em;
   z-index: 1;
 }
+#d-menu {
+  margin: 5px 0 0 19px;
+  padding: 0 20px;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  display: inline-flex;
+  cursor: pointer;
+  justify-content: space-evenly;
+  justify-content: center;
+}
+.register-logo-header {
+  text-align: right;
+  color: #1473a2;
+  margin: 1;
+  padding: rem 1rem 1.rem 0;
+}
 
+.logo-header {
+  text-align: right;
+  color: #1473a2;
+  margin: 0;
+  padding: rem 1rem 1.rem 0;
+}
 .container {
   padding: 50px 0 0;
 }
@@ -148,7 +171,7 @@
   text-align: initial;
 }
 .card .description {
-  padding: 0 0 30px;
+  padding: 0 0 50px;
 }
 @keyframes App-logo-spin {
   from {
@@ -214,7 +237,7 @@
 .nav-pills.nav-wizard > li .nav-wedge {
   position: absolute;
   top: 0px;
-  left: -20px;
+  left: -40px;
   width: 0px;
   height: 0px;
   border-style: solid;
