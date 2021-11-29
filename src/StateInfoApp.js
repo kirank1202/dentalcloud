@@ -1,10 +1,10 @@
+
 import React, { useState, useEffect } from "react";
-import logo from './logo.svg';
 import './Owners.css';
-import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
-import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
 import { API, Storage, Auth } from "aws-amplify";
+import { Navbar, Nav, Container, Card,Row } from 'react-bootstrap';
+import { Table } from 'reactstrap';
+
 
 //import InputGroup from "react-bootstrap/InputGroup";
 //import FormCntrl from "react-bootstrap/FormControl";
@@ -20,16 +20,15 @@ async function fetchState(){
 }
 */
 const initialFormState = {
+  state:"",
   abbreviation: "",
-  name: "",
+  name:  "",
   form1: "",
   form2: "",
   form3: "",
   form4: "",
   from5: "",
 };
-
-
 
 function StateInfoApp() {
   const [state, setState] = useState([]);
@@ -42,7 +41,7 @@ function StateInfoApp() {
 
   async function createState() {
     alert("creating state form");
-    if (!formData.name || !formData.abbreviation) return;
+    if (!formData.name || !formData.abbreviation || !formData.state || !formData.form1 ) return;
     await API.graphql({ query: createStateMutation, variables: { input: formData } });
     setState([ ...state, formData ]);
     setFormData(initialFormState);
@@ -87,60 +86,132 @@ function StateInfoApp() {
   
 
   return (
+    <>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          <h2>Welcome To States Profile Page</h2>
-        </p>
-        </header>
-      <h1>My States App</h1>
-   
-      <table>
-        <thead> 
+      <Navbar bg="dark" variant="dark">
+        <Container>
+          <Navbar.Brand href="#home">Frachise Web</Navbar.Brand>
+          <Nav className="me-auto">
+            <Nav.Link href="#home">My Account</Nav.Link>
+            <Nav.Link href="#features">Operation Manual</Nav.Link>
+            <Nav.Link href="#pricing">Store</Nav.Link>
+            <Nav.Link href="#pricing">My Community</Nav.Link>
+          </Nav>
+          <Navbar.Toggle />
+          <Navbar.Collapse className="justify-content-end">
+            <Navbar.Text>
+            </Navbar.Text>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+      {/* <table border='1'>
+        <thead>
           <tr>
-            <th>abbreviation</th>
-            <th>name</th>
-            <th>form1</th>
-            <th>form2</th>
-            <th>form3</th>
-            <th>form4</th>
-            <th>form5</th>
+            <th>ownerID</th>
+            <th>Lname</th>
+            <th>Fname</th>
+            <th>businessName</th>
+            <th>businessDBAName</th>
+            <th>street</th>
+            <th>unit</th>
+            <th>city</th>
+            <th>state</th>
+            <th>zip</th>
+            <th>primaryDentistName</th>
           </tr>
         </thead>
 
-        <tr>
-          <th>{formData.abbreviation}</th>
-          <th>{formData.name}</th>
-          <th>{formData.form1}</th>
-          <th>formData.form2</th>
-          <th>formData.form3</th>
-          <th>formData.form4</th>
-          <th>formData.from5</th>
-        </tr>
-      </table>
-      <input
-        onChange={e => setFormData({ ...formData, abbreviation: e.target.value})}
-        placeholder="abbreviation"
-        value={formData.abbreviation}
-      />
-      <input
-        onChange={e => setFormData({ ...formData, name: e.target.value})}
-        placeholder="State Name"
-        value={formData.name}
-      />
-      <input
-        type="file"
-        onChange={onChange}
-      />
 
-      <button onClick={createState}>Create State</button>
-      <p> </p>
-      <p> </p>
-      <p> </p>
+        {owner.map((item, key) => (
+          <tr>
+            <th>{item.ownerID}</th>
+            <th>{item.lname}</th>
+            <th>{item.fname}</th>
+            <th>{item.businessName}</th>
+            <th>{item.businessDBAName}</th>
+            <th>{item.steet}</th>
+            <th>{item.unit}</th>
+            <th>{item.city}</th>
+            <th>{item.state}</th>
+            <th>{item.zip}</th>
+            <th>{item.primaryDentistName}</th>
+          </tr>
+        ))}
 
-       </div>
- 
+
+      </table> */}
+      <div class="container-body">
+      <Container >
+        <Card>
+        <Card.Header>File Data</Card.Header>
+          <Card.Body>
+          <Row className="mb-4 mt-5">
+          <div className="userInput">
+          <input
+              type="text"
+              className="abbreviation"
+              onChange={e => setFormData({ ...formData, 'abbreviation': e.target.value})}
+            />
+           <select name="state" id="" className="selectState" onChange={e => setFormData({ ...formData, 'state': e.target.value})} >
+              <option value="">Select state</option>
+              <option value="USA">USA</option>
+              <option value="England">England</option>
+              <option value="Parish">Parish</option>
+              <option value="Netherland">Netherland</option>
+           </select>
+           <select name="state" id="" className="formname" onChange={e => setFormData({ ...formData, 'name': e.target.value})}>
+              <option value="">Form Name</option>
+              <option value="USA">Form One</option>
+              <option value="Form Two">Form Two</option>
+              <option value="Form Three">Form Three</option>
+              <option value="Form Five">Form Five</option>
+           </select>
+            <input
+              type="file"
+              onChange={onChange}
+              className="fileUpload"
+              onChange={e => setFormData({ ...formData, 'form1': e.target.value})}
+            />
+              <div>
+                <button onClick={createState} className="btn btn-primary">Create State</button>
+              </div>
+            </div>
+          </Row>
+
+          <Table responsive hover>
+            <thead>
+              <tr>
+                 <th>abbreviation</th>
+                 <th>state</th>
+                 <th>name</th>
+                <th>form1</th>
+                <th>form2</th>
+                <th>form3</th>
+                <th>form4</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td>{formData.abbreviation}</td>
+                  <td>{formData.state}</td>
+                  <td>{formData.name}</td>
+                  <td>{formData.form1}</td>
+                  <td>formData.form3</td>
+                  <td>formData.form4</td>
+                  <td>formData.from5</td>
+                </tr>
+            </tbody>
+          </Table>
+        
+           
+          </Card.Body>
+        </Card>
+      </Container>
+      </div>
+    </div>
+
+   
+  </>
   );
 }
 export default StateInfoApp;

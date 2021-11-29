@@ -6,17 +6,28 @@ export const getOwner = /* GraphQL */ `
     getOwner(id: $id) {
       id
       ownerID
+      role
+      status
       lname
       fname
-      businessName
-      businessDBAName
       street
       unit
       city
       state
       zip
-      primaryDentistName
-      secondaryDentistName
+      businessName
+      businessDBAName
+      businessLogo
+      businessEmail
+      businessPhone
+      businessURL
+      questionnaireId
+      practiceType
+      mobileClinicType
+      missionStatement
+      visionStatement
+      aboutBusiness
+      ownerBiodata
       businessLicenseNumber
       businessLicenseAcquiredDate
       businessLicenseExpiryDate
@@ -24,10 +35,33 @@ export const getOwner = /* GraphQL */ `
       professionalLicenseNumber
       professionalLicenseAcquiredDate
       professionalLicenseExpiryDate
-      missionStatement
-      visionStatement
-      aboutBusiness
-      ownerBiodata
+      hygieneAssociationMembership
+      hygieneAssociationMembershipExpiryDate
+      aDAMembership
+      aDAMembershipExpiryDate
+      continuingEducationHours
+      continuingEducationHoursExpiryDate
+      cPRNumber
+      cPRNumberExpiryDate
+      financialInstituteName
+      primaryDentist
+      primaryDentistPhone
+      primaryDentistEmail
+      secondaryDentist
+      secondaryDentistPhone
+      secondaryDentistEmail
+      lawyerName
+      lawyerPhone
+      lawyerEmail
+      accountantName
+      accountantPhone
+      accountantEmail
+      websiteDesigner
+      websiteSupport
+      targetMarket
+      socialMediaMarketing
+      oldfashionedMarketing
+      businessReviewsURL
       createdAt
       updatedAt
     }
@@ -43,17 +77,28 @@ export const listOwners = /* GraphQL */ `
       items {
         id
         ownerID
+        role
+        status
         lname
         fname
-        businessName
-        businessDBAName
         street
         unit
         city
         state
         zip
-        primaryDentistName
-        secondaryDentistName
+        businessName
+        businessDBAName
+        businessLogo
+        businessEmail
+        businessPhone
+        businessURL
+        questionnaireId
+        practiceType
+        mobileClinicType
+        missionStatement
+        visionStatement
+        aboutBusiness
+        ownerBiodata
         businessLicenseNumber
         businessLicenseAcquiredDate
         businessLicenseExpiryDate
@@ -61,10 +106,84 @@ export const listOwners = /* GraphQL */ `
         professionalLicenseNumber
         professionalLicenseAcquiredDate
         professionalLicenseExpiryDate
-        missionStatement
-        visionStatement
-        aboutBusiness
-        ownerBiodata
+        hygieneAssociationMembership
+        hygieneAssociationMembershipExpiryDate
+        aDAMembership
+        aDAMembershipExpiryDate
+        continuingEducationHours
+        continuingEducationHoursExpiryDate
+        cPRNumber
+        cPRNumberExpiryDate
+        financialInstituteName
+        primaryDentist
+        primaryDentistPhone
+        primaryDentistEmail
+        secondaryDentist
+        secondaryDentistPhone
+        secondaryDentistEmail
+        lawyerName
+        lawyerPhone
+        lawyerEmail
+        accountantName
+        accountantPhone
+        accountantEmail
+        websiteDesigner
+        websiteSupport
+        targetMarket
+        socialMediaMarketing
+        oldfashionedMarketing
+        businessReviewsURL
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getQuestionnaire = /* GraphQL */ `
+  query GetQuestionnaire($id: ID!) {
+    getQuestionnaire(id: $id) {
+      id
+      questionnaireId
+      passion
+      othersInterest
+      planB
+      pricePoint
+      competition
+      growBusiness
+      insuranceNeeds
+      costOfEntry
+      monthlyLivingExpenses
+      readyAndDriven
+      additionalNotes1
+      additionalNotes2
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listQuestionnaires = /* GraphQL */ `
+  query ListQuestionnaires(
+    $filter: ModelQuestionnaireFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listQuestionnaires(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        questionnaireId
+        passion
+        othersInterest
+        planB
+        pricePoint
+        competition
+        growBusiness
+        insuranceNeeds
+        costOfEntry
+        monthlyLivingExpenses
+        readyAndDriven
+        additionalNotes1
+        additionalNotes2
         createdAt
         updatedAt
       }

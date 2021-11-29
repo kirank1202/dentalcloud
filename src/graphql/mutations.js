@@ -9,17 +9,28 @@ export const createOwner = /* GraphQL */ `
     createOwner(input: $input, condition: $condition) {
       id
       ownerID
+      role
+      status
       lname
       fname
-      businessName
-      businessDBAName
       street
       unit
       city
       state
       zip
-      primaryDentistName
-      secondaryDentistName
+      businessName
+      businessDBAName
+      businessLogo
+      businessEmail
+      businessPhone
+      businessURL
+      questionnaireId
+      practiceType
+      mobileClinicType
+      missionStatement
+      visionStatement
+      aboutBusiness
+      ownerBiodata
       businessLicenseNumber
       businessLicenseAcquiredDate
       businessLicenseExpiryDate
@@ -27,10 +38,33 @@ export const createOwner = /* GraphQL */ `
       professionalLicenseNumber
       professionalLicenseAcquiredDate
       professionalLicenseExpiryDate
-      missionStatement
-      visionStatement
-      aboutBusiness
-      ownerBiodata
+      hygieneAssociationMembership
+      hygieneAssociationMembershipExpiryDate
+      aDAMembership
+      aDAMembershipExpiryDate
+      continuingEducationHours
+      continuingEducationHoursExpiryDate
+      cPRNumber
+      cPRNumberExpiryDate
+      financialInstituteName
+      primaryDentist
+      primaryDentistPhone
+      primaryDentistEmail
+      secondaryDentist
+      secondaryDentistPhone
+      secondaryDentistEmail
+      lawyerName
+      lawyerPhone
+      lawyerEmail
+      accountantName
+      accountantPhone
+      accountantEmail
+      websiteDesigner
+      websiteSupport
+      targetMarket
+      socialMediaMarketing
+      oldfashionedMarketing
+      businessReviewsURL
       createdAt
       updatedAt
     }
@@ -44,17 +78,28 @@ export const updateOwner = /* GraphQL */ `
     updateOwner(input: $input, condition: $condition) {
       id
       ownerID
+      role
+      status
       lname
       fname
-      businessName
-      businessDBAName
       street
       unit
       city
       state
       zip
-      primaryDentistName
-      secondaryDentistName
+      businessName
+      businessDBAName
+      businessLogo
+      businessEmail
+      businessPhone
+      businessURL
+      questionnaireId
+      practiceType
+      mobileClinicType
+      missionStatement
+      visionStatement
+      aboutBusiness
+      ownerBiodata
       businessLicenseNumber
       businessLicenseAcquiredDate
       businessLicenseExpiryDate
@@ -62,10 +107,33 @@ export const updateOwner = /* GraphQL */ `
       professionalLicenseNumber
       professionalLicenseAcquiredDate
       professionalLicenseExpiryDate
-      missionStatement
-      visionStatement
-      aboutBusiness
-      ownerBiodata
+      hygieneAssociationMembership
+      hygieneAssociationMembershipExpiryDate
+      aDAMembership
+      aDAMembershipExpiryDate
+      continuingEducationHours
+      continuingEducationHoursExpiryDate
+      cPRNumber
+      cPRNumberExpiryDate
+      financialInstituteName
+      primaryDentist
+      primaryDentistPhone
+      primaryDentistEmail
+      secondaryDentist
+      secondaryDentistPhone
+      secondaryDentistEmail
+      lawyerName
+      lawyerPhone
+      lawyerEmail
+      accountantName
+      accountantPhone
+      accountantEmail
+      websiteDesigner
+      websiteSupport
+      targetMarket
+      socialMediaMarketing
+      oldfashionedMarketing
+      businessReviewsURL
       createdAt
       updatedAt
     }
@@ -79,17 +147,28 @@ export const deleteOwner = /* GraphQL */ `
     deleteOwner(input: $input, condition: $condition) {
       id
       ownerID
+      role
+      status
       lname
       fname
-      businessName
-      businessDBAName
       street
       unit
       city
       state
       zip
-      primaryDentistName
-      secondaryDentistName
+      businessName
+      businessDBAName
+      businessLogo
+      businessEmail
+      businessPhone
+      businessURL
+      questionnaireId
+      practiceType
+      mobileClinicType
+      missionStatement
+      visionStatement
+      aboutBusiness
+      ownerBiodata
       businessLicenseNumber
       businessLicenseAcquiredDate
       businessLicenseExpiryDate
@@ -97,10 +176,108 @@ export const deleteOwner = /* GraphQL */ `
       professionalLicenseNumber
       professionalLicenseAcquiredDate
       professionalLicenseExpiryDate
-      missionStatement
-      visionStatement
-      aboutBusiness
-      ownerBiodata
+      hygieneAssociationMembership
+      hygieneAssociationMembershipExpiryDate
+      aDAMembership
+      aDAMembershipExpiryDate
+      continuingEducationHours
+      continuingEducationHoursExpiryDate
+      cPRNumber
+      cPRNumberExpiryDate
+      financialInstituteName
+      primaryDentist
+      primaryDentistPhone
+      primaryDentistEmail
+      secondaryDentist
+      secondaryDentistPhone
+      secondaryDentistEmail
+      lawyerName
+      lawyerPhone
+      lawyerEmail
+      accountantName
+      accountantPhone
+      accountantEmail
+      websiteDesigner
+      websiteSupport
+      targetMarket
+      socialMediaMarketing
+      oldfashionedMarketing
+      businessReviewsURL
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createQuestionnaire = /* GraphQL */ `
+  mutation CreateQuestionnaire(
+    $input: CreateQuestionnaireInput!
+    $condition: ModelQuestionnaireConditionInput
+  ) {
+    createQuestionnaire(input: $input, condition: $condition) {
+      id
+      questionnaireId
+      passion
+      othersInterest
+      planB
+      pricePoint
+      competition
+      growBusiness
+      insuranceNeeds
+      costOfEntry
+      monthlyLivingExpenses
+      readyAndDriven
+      additionalNotes1
+      additionalNotes2
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateQuestionnaire = /* GraphQL */ `
+  mutation UpdateQuestionnaire(
+    $input: UpdateQuestionnaireInput!
+    $condition: ModelQuestionnaireConditionInput
+  ) {
+    updateQuestionnaire(input: $input, condition: $condition) {
+      id
+      questionnaireId
+      passion
+      othersInterest
+      planB
+      pricePoint
+      competition
+      growBusiness
+      insuranceNeeds
+      costOfEntry
+      monthlyLivingExpenses
+      readyAndDriven
+      additionalNotes1
+      additionalNotes2
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteQuestionnaire = /* GraphQL */ `
+  mutation DeleteQuestionnaire(
+    $input: DeleteQuestionnaireInput!
+    $condition: ModelQuestionnaireConditionInput
+  ) {
+    deleteQuestionnaire(input: $input, condition: $condition) {
+      id
+      questionnaireId
+      passion
+      othersInterest
+      planB
+      pricePoint
+      competition
+      growBusiness
+      insuranceNeeds
+      costOfEntry
+      monthlyLivingExpenses
+      readyAndDriven
+      additionalNotes1
+      additionalNotes2
       createdAt
       updatedAt
     }

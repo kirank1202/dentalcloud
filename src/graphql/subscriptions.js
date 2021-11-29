@@ -6,17 +6,28 @@ export const onCreateOwner = /* GraphQL */ `
     onCreateOwner {
       id
       ownerID
+      role
+      status
       lname
       fname
-      businessName
-      businessDBAName
       street
       unit
       city
       state
       zip
-      primaryDentistName
-      secondaryDentistName
+      businessName
+      businessDBAName
+      businessLogo
+      businessEmail
+      businessPhone
+      businessURL
+      questionnaireId
+      practiceType
+      mobileClinicType
+      missionStatement
+      visionStatement
+      aboutBusiness
+      ownerBiodata
       businessLicenseNumber
       businessLicenseAcquiredDate
       businessLicenseExpiryDate
@@ -24,10 +35,33 @@ export const onCreateOwner = /* GraphQL */ `
       professionalLicenseNumber
       professionalLicenseAcquiredDate
       professionalLicenseExpiryDate
-      missionStatement
-      visionStatement
-      aboutBusiness
-      ownerBiodata
+      hygieneAssociationMembership
+      hygieneAssociationMembershipExpiryDate
+      aDAMembership
+      aDAMembershipExpiryDate
+      continuingEducationHours
+      continuingEducationHoursExpiryDate
+      cPRNumber
+      cPRNumberExpiryDate
+      financialInstituteName
+      primaryDentist
+      primaryDentistPhone
+      primaryDentistEmail
+      secondaryDentist
+      secondaryDentistPhone
+      secondaryDentistEmail
+      lawyerName
+      lawyerPhone
+      lawyerEmail
+      accountantName
+      accountantPhone
+      accountantEmail
+      websiteDesigner
+      websiteSupport
+      targetMarket
+      socialMediaMarketing
+      oldfashionedMarketing
+      businessReviewsURL
       createdAt
       updatedAt
     }
@@ -38,17 +72,28 @@ export const onUpdateOwner = /* GraphQL */ `
     onUpdateOwner {
       id
       ownerID
+      role
+      status
       lname
       fname
-      businessName
-      businessDBAName
       street
       unit
       city
       state
       zip
-      primaryDentistName
-      secondaryDentistName
+      businessName
+      businessDBAName
+      businessLogo
+      businessEmail
+      businessPhone
+      businessURL
+      questionnaireId
+      practiceType
+      mobileClinicType
+      missionStatement
+      visionStatement
+      aboutBusiness
+      ownerBiodata
       businessLicenseNumber
       businessLicenseAcquiredDate
       businessLicenseExpiryDate
@@ -56,10 +101,33 @@ export const onUpdateOwner = /* GraphQL */ `
       professionalLicenseNumber
       professionalLicenseAcquiredDate
       professionalLicenseExpiryDate
-      missionStatement
-      visionStatement
-      aboutBusiness
-      ownerBiodata
+      hygieneAssociationMembership
+      hygieneAssociationMembershipExpiryDate
+      aDAMembership
+      aDAMembershipExpiryDate
+      continuingEducationHours
+      continuingEducationHoursExpiryDate
+      cPRNumber
+      cPRNumberExpiryDate
+      financialInstituteName
+      primaryDentist
+      primaryDentistPhone
+      primaryDentistEmail
+      secondaryDentist
+      secondaryDentistPhone
+      secondaryDentistEmail
+      lawyerName
+      lawyerPhone
+      lawyerEmail
+      accountantName
+      accountantPhone
+      accountantEmail
+      websiteDesigner
+      websiteSupport
+      targetMarket
+      socialMediaMarketing
+      oldfashionedMarketing
+      businessReviewsURL
       createdAt
       updatedAt
     }
@@ -70,17 +138,28 @@ export const onDeleteOwner = /* GraphQL */ `
     onDeleteOwner {
       id
       ownerID
+      role
+      status
       lname
       fname
-      businessName
-      businessDBAName
       street
       unit
       city
       state
       zip
-      primaryDentistName
-      secondaryDentistName
+      businessName
+      businessDBAName
+      businessLogo
+      businessEmail
+      businessPhone
+      businessURL
+      questionnaireId
+      practiceType
+      mobileClinicType
+      missionStatement
+      visionStatement
+      aboutBusiness
+      ownerBiodata
       businessLicenseNumber
       businessLicenseAcquiredDate
       businessLicenseExpiryDate
@@ -88,10 +167,99 @@ export const onDeleteOwner = /* GraphQL */ `
       professionalLicenseNumber
       professionalLicenseAcquiredDate
       professionalLicenseExpiryDate
-      missionStatement
-      visionStatement
-      aboutBusiness
-      ownerBiodata
+      hygieneAssociationMembership
+      hygieneAssociationMembershipExpiryDate
+      aDAMembership
+      aDAMembershipExpiryDate
+      continuingEducationHours
+      continuingEducationHoursExpiryDate
+      cPRNumber
+      cPRNumberExpiryDate
+      financialInstituteName
+      primaryDentist
+      primaryDentistPhone
+      primaryDentistEmail
+      secondaryDentist
+      secondaryDentistPhone
+      secondaryDentistEmail
+      lawyerName
+      lawyerPhone
+      lawyerEmail
+      accountantName
+      accountantPhone
+      accountantEmail
+      websiteDesigner
+      websiteSupport
+      targetMarket
+      socialMediaMarketing
+      oldfashionedMarketing
+      businessReviewsURL
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateQuestionnaire = /* GraphQL */ `
+  subscription OnCreateQuestionnaire {
+    onCreateQuestionnaire {
+      id
+      questionnaireId
+      passion
+      othersInterest
+      planB
+      pricePoint
+      competition
+      growBusiness
+      insuranceNeeds
+      costOfEntry
+      monthlyLivingExpenses
+      readyAndDriven
+      additionalNotes1
+      additionalNotes2
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateQuestionnaire = /* GraphQL */ `
+  subscription OnUpdateQuestionnaire {
+    onUpdateQuestionnaire {
+      id
+      questionnaireId
+      passion
+      othersInterest
+      planB
+      pricePoint
+      competition
+      growBusiness
+      insuranceNeeds
+      costOfEntry
+      monthlyLivingExpenses
+      readyAndDriven
+      additionalNotes1
+      additionalNotes2
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteQuestionnaire = /* GraphQL */ `
+  subscription OnDeleteQuestionnaire {
+    onDeleteQuestionnaire {
+      id
+      questionnaireId
+      passion
+      othersInterest
+      planB
+      pricePoint
+      competition
+      growBusiness
+      insuranceNeeds
+      costOfEntry
+      monthlyLivingExpenses
+      readyAndDriven
+      additionalNotes1
+      additionalNotes2
       createdAt
       updatedAt
     }

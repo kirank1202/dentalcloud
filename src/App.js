@@ -10,6 +10,9 @@ import OwnersApp from "./OwnersApp";
 import MobileDentalReportsApp from './MobileDentalReportsApp';
 import MobileDentalDefaultApp from './MobileDentalDefaultApp';
 import OwnersProfileApp from './OwnersProfileApp';
+import ProspectApp from './ProspectApp';
+import ProspectDetailsApp from './ProspectDetailsApp';
+import RegistrationApp from './RegistrationApp';
 import AdminApp from './AdminApp';
 import StateInfoApp from './StateInfoApp';
 import StatewiseFiles from './StatewiseFiles';
@@ -90,6 +93,10 @@ return (
         <Route path="/default" component={MobileDentalDefaultApp} />
         <Route path="/ownersprofile" component={OwnersProfileApp} />
         <Route path="/files" component={StatewiseFiles} />
+        <Route path="/prospect" component={ProspectApp} />
+        <Route path="/prospectDetails" component={ProspectDetailsApp} />
+        <Route path="/registration" component={RegistrationApp} />
+        
         
         {fetchCurrentUserGroup}
         {
@@ -106,20 +113,21 @@ return (
                     <Redirect to="/adminshome" />
                   ):
                   (
-                    <Redirect to="/default" /> 
+                    <Redirect to="/registration" /> 
                     )
                 )
               
               )
         }
-        <AmplifySignOut />
+        {/*}
+        <AmplifySignOut />  */}
     </Router>
   </div>
 );
 }
-export default withAuthenticator(App);
+// export default withAuthenticator(App);
 
-//export default App;
+export default App;
 
 /*
 function App() {

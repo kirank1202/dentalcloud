@@ -15,6 +15,38 @@
   text-align: right;
   font-weight: 700;
 }
+.userInput{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.selectState,
+.formname{
+  width: 21%;
+  border: 1px solid #999;
+  border-radius: 3px;
+  height: 38px;
+}
+.fileUpload {
+  border: 1px solid #999;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 600;
+  width: 21%;
+  height: 38px;
+  padding: 3px;
+}
+.abbreviation{
+  width: 21%;
+  height: 38px;
+  outline: none;
+}
+
+
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -30,11 +62,117 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+/* Cards design */
+.container-body {
+  margin: 0;
 
+}
+
+.nav-tabs {
+  border-bottom: 1px solid #dee2e6;
+  border-radius: 3px;
+  padding: 1rem 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.container-body .nav-tabs .nav-item.show .nav-link, 
+.container-body .nav-tabs .nav-link.active {
+  color: #fff;
+  background-color: hsla(0,0%,100%,.2);
+  transition: background-color .3s .2s;
+  border: 0;
+  border-radius: 0;
+} 
+.nav-tabs .nav-link:focus, 
+.nav-tabs .nav-link:hover {
+  color: #fff;
+  background-color: hsla(0,0%,100%,.2);
+  transition: background-color .3s .2s;
+  border: 0;
+  border-radius: 0;
+}
+.container-body .nav-tabs {
+  border: none;
+  background: linear-gradient(
+    60deg,#7b1fa2,#7b1fa2);
+    margin: 0;
+    padding: 10px 10px 0;
+    border-radius: 0;
+    box-shadow: 0 5px 20px 0 rgb(0 0 0 / 20%), 0 13px 24px -11px rgb(156 39 176 / 60%);
+    z-index: 2;
+    position: relative;
+}
+.container-body .nav-link {
+  color: #fff;
+  padding: 10px 70px;
+
+}
+.register-container {
+  border: 0;
+  margin-bottom: 30px;
+  margin-top: -30px;
+  border-radius: 6px;
+  color: rgba(0,0,0,.87);
+  background: #fff;
+  width: 100%;
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+  flex: 1 1 auto;
+  padding: 70px 1.25em 1.25em;
+  z-index: 1;
+}
+.lead-sidebar {
+  border: 0;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  border-radius: 6px;
+  color: rgba(0,0,0,.87);
+  background: #fff;
+  width: 100%;
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+  flex: 1 1 auto;
+  padding: 1.25em 1.25em;
+  z-index: 1;
+}
+#d-menu {
+  margin: 5px 0 0 19px;
+  padding: 0 20px;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  display: inline-flex;
+  cursor: pointer;
+  justify-content: space-evenly;
+  justify-content: center;
+}
+.register-logo-header {
+  text-align: right;
+  color: #1473a2;
+  margin: 1;
+  padding: rem 1rem 1.rem 0;
+}
+
+.logo-header {
+  text-align: right;
+  color: #1473a2;
+  margin: 0;
+  padding: rem 1rem 1.rem 0;
+}
+.container {
+  padding: 50px 0 0;
+}
+.form-check {
+  text-align: left;
+}
 .App-link {
   color: #61dafb;
 }
-
+.card{
+  text-align: initial;
+}
+.card .description {
+  padding: 0 0 50px;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -43,3 +181,181 @@
     transform: rotate(360deg);
   }
 }
+
+/* Start of Steps */
+.steps .nav-tabs {
+  background: none;
+    box-shadow: none;
+}
+.steps .nav-tabs .nav-link {
+  background-color: #aaa;
+  color: #fff;
+  border: 0;
+  border-radius: 0;
+  z-index: 1;
+}
+
+.steps .nav-tabs .nav-link.active {
+  background-color: #aaa;
+  color: #fff;
+  border-color: #428bca #428bca #428bca transparent;
+  background-color: #428bca;
+  z-index: 1;
+  
+}
+
+.steps .nav-tabs .nav-link.active:after,
+.steps .nav-tabs .nav-link:after {
+  content: "\f0da";
+  color: #428bca;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: 78px;
+  position: absolute;
+  top: -17px;
+  right: -26px;
+  z-index: 2;
+  text-shadow: 3px 0px 0px #fff;
+}
+.steps .nav-tabs .nav-link:after  {
+  color: #aaa;
+
+}
+.steps .nav-tabs .nav-item {
+  position: relative;
+}
+.nav-pills.nav-wizard > li .nav-arrow {
+  position: absolute;
+  top: 0px;
+  right: -20px;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 20px 0 20px 20px;
+  border-color: transparent transparent transparent #eee;
+  z-index: 150;
+}
+.nav-pills.nav-wizard > li .nav-wedge {
+  position: absolute;
+  top: 0px;
+  left: -40px;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 20px 0 20px 20px;
+  border-color: #eee #eee #eee transparent;
+  z-index: 150;
+}
+.nav-pills.nav-wizard > li:hover .nav-arrow {
+  border-color: transparent transparent transparent #aaa;
+}
+
+/* End of Steps */
+/* owner styles */
+li.active > a.hidden-xs {
+  display: block!important;
+ }
+ li.active > a.visible-xs {
+   display: none!important; 
+ }
+ .nav-pills.nav-wizard > li {
+   position: relative;
+   overflow: visible;
+   border-right: 10px solid #fff;
+   border-left: 10px solid #fff;
+ }
+ .nav-pills.nav-wizard > li:first-child {
+   border-left: 0;
+ }
+ .nav-pills.nav-wizard > li:first-child a {
+   border-radius: 5px 0 0 5px;
+ }
+ .nav-pills.nav-wizard > li:last-child {
+   border-right: 0;
+ }
+ .nav-pills.nav-wizard > li:last-child a {
+   border-radius: 0 5px 5px 0;
+ }
+ .nav-pills.nav-wizard > li a {
+   border-radius: 0;
+   background-color: #eee;
+   padding: 10px;
+ }
+ .nav-pills.nav-wizard > li .nav-arrow {
+   position: absolute;
+   top: 0px;
+   right: -20px;
+   width: 0px;
+   height: 0px;
+   border-style: solid;
+   border-width: 20px 0 20px 20px;
+   border-color: transparent transparent transparent #eee;
+   z-index: 150;
+ }
+ .nav-pills.nav-wizard > li .nav-wedge {
+   position: absolute;
+   top: 0px;
+   left: -20px;
+   width: 0px;
+   height: 0px;
+   border-style: solid;
+   border-width: 20px 0 20px 20px;
+   border-color: #eee #eee #eee transparent;
+   z-index: 150;
+ }
+ .nav-pills.nav-wizard > li:hover .nav-arrow {
+   border-color: transparent transparent transparent #aaa;
+ }
+ .nav-pills.nav-wizard > li:hover .nav-wedge {
+   border-color: #aaa #aaa #aaa transparent;
+ }
+ .nav-pills.nav-wizard > li:hover a {
+   background-color: #aaa;
+   color: #fff;
+ }
+ .nav-pills.nav-wizard > li.active .nav-arrow {
+   border-color: transparent transparent transparent #428bca;
+ }
+ .nav-pills.nav-wizard > li.active .nav-wedge {
+   border-color: #428bca #428bca #428bca transparent;
+ }
+ .nav-pills.nav-wizard > li.active a {
+   background-color: #428bca;
+ }
+ /* CSS for Credit Card Payment form */
+ .credit-card-box .panel-title {
+     display: inline;
+     font-weight: bold;	
+ }
+ .credit-card-box .form-control.error {
+     border-color: red;
+     outline: 0;
+     box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(255,0,0,0.6);
+ }
+ .credit-card-box label.error {
+   font-weight: bold;
+   color: red;
+   padding: 2px 8px;
+   margin-top: 2px;
+ }
+ .credit-card-box .payment-errors {
+   font-weight: bold;
+   color: red;
+   padding: 2px 8px;
+   margin-top: 2px;
+ }
+ .credit-card-box label {
+     display: block;
+ }
+ 
+ .credit-card-box .display-tr {
+     display: table-row;
+ }
+ .credit-card-box .display-td {
+     display: table-cell;
+     vertical-align: middle;
+     width: 50%;
+ }
+ /* Just looks nicer */
+ .credit-card-box .panel-heading img {
+     min-width: 180px;
+ }

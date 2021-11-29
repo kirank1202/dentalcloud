@@ -9,8 +9,8 @@ import { API, Storage, Auth } from "aws-amplify";
 import { Navbar, Nav, Container, Tab, Tabs, Form, Row, Col, Button, ListGroup, Card } from 'react-bootstrap';
 import { listOwners } from './graphql/queries';
 import { createOwner as createOwnerMutation, deleteOwner as deleteOwnerMutation } from './graphql/mutations';
-
-
+import Image from 'react-bootstrap/Image';
+import bannerImage from './assets/banner-image-1.jpg';
 
 /*
 async function fetchOwner(){
@@ -45,14 +45,14 @@ const initialFormState = {
 function submitHandler(e) {
   e.preventDefault();
 }
-function OwnersProfileApp() {
+function ProspectDetailsApp() {
   let history = useHistory();
   const [owner, setOwner] = useState([]);
   const [formData, setFormData] = useState(initialFormState);
-  const [enableEdit, setEnableEdit] = useState(false);
+  const [createProspect, setCreateProspect] = useState(true);
 
   useEffect(() => {
-    fetchOwner();
+    // fetchOwner();
   }, []);
 
   async function fetchOwner() {
@@ -61,37 +61,56 @@ function OwnersProfileApp() {
     setFormData(apiData.data.listOwners.items[0])
   }
 
-  async function createOwner() {
-    setEnableEdit(!enableEdit);
+  async function handleCreateProspect() {
+    // setCreateProspect(!createProspect);
     if (!formData.lname || !formData.fname) return;
     await API.graphql({ query: createOwnerMutation, variables: { input: formData } });
     setOwner([...owner, formData]);
     // setFormData(initialFormState);
   }
 
-function editOwner() {
-  setEnableEdit(!enableEdit);
-}
-
   return (
     <div className="App">
-      <div className="container-body owner">
-        <Tabs defaultActiveKey="start">
-          <Tab eventKey="start" title="Home">
-            <Container >
-              <Card>
-                <Card.Header>Owners Profile</Card.Header>
-                <Card.Body>
+      <div class="container-body">
+        <div>
+          <Tabs defaultActiveKey="start">
+            <Tab eventKey="start" title="Home">
+              <Image src={bannerImage} fluid />
+            </Tab>
+
+            <Tab eventKey="second" title="Opportunity Overview">
+            <Container>
+              <div class="register-container card">
+              <span class='description'>
+                Please click on the video to watch the fundamentals of Mobile Dentistry
+                </span>
+                <iframe width="750" height="315"
+                  src="https://www.youtube.com/embed/oWImHHcAhi4">
+                </iframe>
+              </div>
+              </Container>
+            </Tab>
+            <Tab eventKey="third" title="Mobile Dentistry Education">
+            <Container>
+              <div class="register-container card">
+                <span class='description'>Please click on the video to watch the fundamentals of starting mobile dentistry</span>
+                <iframe width="750" height="315" src="https://www.youtube.com/embed/7poSoylCwD0">
+                </iframe>
+              </div>
+              </Container>
+            </Tab>
+            <Tab eventKey="first" title="Registration">
+              <Container>
+                <div class="register-container card">
                   <Row>
                     <Col sm={9}>
                       <Form onSubmit={submitHandler}>
-
                         <Row className="mb-3">
                           <Form.Group as={Row} controlId="formGridCity">
                             <Form.Label column sm={4}>First Name</Form.Label>
-                            <div className="col-sm-8">
+                            <div class="col-sm-8">
                               <input
-                                className={enableEdit ? "form-control" : 'form-control form-control-plaintext'}
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
                                 onChange={e => setFormData({ ...formData, 'fname': e.target.value })}
                                 placeholder="Owner First Name"
                                 value={formData?.fname}
@@ -100,9 +119,9 @@ function editOwner() {
                           </Form.Group>
                           <Form.Group as={Row} controlId="formGridCity">
                             <Form.Label column sm={4}>Last Name</Form.Label>
-                            <div className="col-sm-8">
+                            <div class="col-sm-8">
                               <input
-                                className={enableEdit ? "form-control" : 'form-control form-control-plaintext'}
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
                                 onChange={e => setFormData({ ...formData, 'lname': e.target.value })}
                                 placeholder="Owner Last Name"
                                 value={formData?.lname}
@@ -111,10 +130,10 @@ function editOwner() {
                           </Form.Group>
                           <Form.Group as={Row} controlId="formGridEmail">
                             <Form.Label column sm={4}>Business License Number</Form.Label>
-                            <div className="col-sm-8">
+                            <div class="col-sm-8">
                               <input
-                                className={enableEdit ? "form-control" : 'form-control form-control-plaintext'}
-                                onChange={e => setFormData({ ...formData, 'lname': e.target.value })}
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'businessLicenseNumber': e.target.value })}
                                 placeholder="Owner businessLicenseNumber"
                                 value={formData?.businessLicenseNumber}
                               />
@@ -125,10 +144,10 @@ function editOwner() {
                         <Row className="mb-3">
                           <Form.Group as={Row} controlId="formGridAddress1">
                             <Form.Label column sm={4}>Street</Form.Label>
-                            <div className="col-sm-8">
+                            <div class="col-sm-8">
                               <input
-                                className={enableEdit ? "form-control" : 'form-control form-control-plaintext'}
-                                onChange={e => setFormData({ ...formData, 'lname': e.target.value })}
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'street': e.target.value })}
                                 placeholder="Owner businessLicenseNumber"
                                 value={formData?.street}
                               />
@@ -137,10 +156,10 @@ function editOwner() {
 
                           <Form.Group as={Row} controlId="formGridAddress2">
                             <Form.Label column sm={4}>VisionStatement</Form.Label>
-                            <div className="col-sm-8">
+                            <div class="col-sm-8">
                               <input
-                                className={enableEdit ? "form-control" : 'form-control form-control-plaintext'}
-                                onChange={e => setFormData({ ...formData, 'lname': e.target.value })}
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'visionStatement': e.target.value })}
                                 placeholder="Owner visionStatement"
                                 value={formData?.visionStatement}
                               />
@@ -150,10 +169,10 @@ function editOwner() {
                         <Row className="mb-3">
                           <Form.Group as={Row} controlId="formGridCity">
                             <Form.Label column sm={4}>City</Form.Label>
-                            <div className="col-sm-8">
+                            <div class="col-sm-8">
                               <input
-                                className={enableEdit ? "form-control" : 'form-control form-control-plaintext'}
-                                onChange={e => setFormData({ ...formData, 'lname': e.target.value })}
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'city': e.target.value })}
                                 placeholder="Owner businessLicenseNumber"
                                 value={formData?.city}
                               />
@@ -162,10 +181,10 @@ function editOwner() {
 
                           <Form.Group as={Row} controlId="formGridState">
                             <Form.Label column sm={4}>State</Form.Label>
-                            <div className="col-sm-8">
+                            <div class="col-sm-8">
                               <input
-                                className={enableEdit ? "form-control" : 'form-control form-control-plaintext'}
-                                onChange={e => setFormData({ ...formData, 'lname': e.target.value })}
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'state': e.target.value })}
                                 placeholder="Owner businessLicenseNumber"
                                 value={formData?.state}
                               />
@@ -174,61 +193,27 @@ function editOwner() {
 
                           <Form.Group as={Row} controlId="formGridZip">
                             <Form.Label column sm={4}>Zip</Form.Label>
-                            <div className="col-sm-8">
+                            <div class="col-sm-8">
                               <input
-                                className={enableEdit ? "form-control" : 'form-control form-control-plaintext'}
-                                onChange={e => setFormData({ ...formData, 'lname': e.target.value })}
+                                class={createProspect ? "form-control" : 'form-control form-control-plaintext'}
+                                onChange={e => setFormData({ ...formData, 'zip': e.target.value })}
                                 placeholder="Owner businessLicenseNumber"
                                 value={formData?.zip}
                               />
                             </div>
                           </Form.Group>
                         </Row>
-                        {enableEdit ? <button className="btn btn-primary" onClick={createOwner}>Update Owner</button>
-                          : <button className="btn btn-primary" onClick={editOwner}>Edit Owner</button>
-                        }
+                        <button class="btn btn-primary" onClick={handleCreateProspect}>Create User</button>
                       </Form>
                     </Col>
-                    <Col sm={3}>
-                      <Card>
-                        <Card.Img variant="top" src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-profiles/avatar-1.jpg" />
-                        <Card.Body>
-                          <Card.Title>{formData?.fname}</Card.Title>
-                          <Card.Text>{formData?.visionStatement}
-                          </Card.Text>
-                        </Card.Body>
-                      </Card>
-                      <br />
-                      <div className="list-group">
-                        <a href="#link1" onClick={() => history.push('files')} data-rr-ui-event-key="#link1" className="list-group-item active list-group-item-action">Files</a>
-                        <a href="#link2" tabindex="-1" aria-disabled="true" data-rr-ui-event-key="#link2" className="list-group-item disabled list-group-item-action">Quick Link 2</a>
-                      </div>
-                    </Col>
                   </Row>
-                </Card.Body>
-              </Card>
-            </Container>
-          </Tab>
-          <Tab eventKey="process" title="Process">
-            <div className="steps">
-              <Tabs defaultActiveKey="second">
-                <Tab eventKey="first" title="Dashboard">
-                <div className="nav-arrow"></div>
-                  Hii, I am 1st tab content
-                </Tab>
-                <Tab eventKey="second" title="Setting">
-                <div className="nav-arrow"></div>
-                  Hii, I am 2nd tab content
-                </Tab>
-                <Tab eventKey="third" title="Aboutus">
-                <div className="nav-arrow"></div>
-                  Hii, I am 3rd tab content
-                </Tab>
-              </Tabs>
-            </div>
-          </Tab>
-        </Tabs>
+                </div>
+              </Container>
+            </Tab>
+          </Tabs>
+        </div>
       </div>
+     
     </div>
 
   );
@@ -236,4 +221,6 @@ function editOwner() {
 
 
 
-export default OwnersProfileApp;
+export default ProspectDetailsApp;
+
+//export default withAuthenticator(ProspectDetailsApp);
