@@ -102,7 +102,7 @@ return (
         {
           userType === "Leads" ? 
           (
-            <Redirect to="/leadshome" />
+            <Redirect to="/registration" />
           ) : ( 
                 userType == "Bizowners" ? 
                 (
