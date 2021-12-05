@@ -40,7 +40,7 @@ const initialQualifyFormState = {
 
 const initialFormState = {
   ownerID: "",
-  status: 0,
+  status: 2,
   lname: "",
   fname: "",
   businessName: "",
@@ -89,7 +89,7 @@ function submitHandler(e) {
   e.preventDefault();
 }
 
-let statusCode = 0.0;
+let statusCode = 2;
 let jumpstartDisabled = true;
 let licenseDisabled = true;
 let dentistDisabled = true;
@@ -298,7 +298,7 @@ alert("Marketing information updated");
             <Tab eventKey="welcome" title="Welcome">
               <Image src={bannerImage} fluid />
             </Tab>
-
+            {/*
             <Tab eventKey="registration" title="0: REGISTRATION">
               <Container>
                 <div class="register-container card">
@@ -428,7 +428,7 @@ alert("Marketing information updated");
                       />
                       {isVideoOneON ? <div class="lead-sidebar card">
                         <span class='description'>Please click on the video1 to watch the fundamentals of starting mobile dentistry</span>
-                        <iframe width="100%"  src="https://www.youtube.com/embed/7poSoylCwD0">
+                        <iframe width="100%"  src="https://youtu.be/7poSoylCwD0">
                         </iframe>
                       </div> :""
                       }
@@ -681,7 +681,7 @@ alert("Marketing information updated");
                       />
                       {isVideoOneON ? <div class="lead-sidebar card">
                         <span class='description'>Please click on the video1 to watch the fundamentals of starting mobile dentistry</span>
-                        <iframe width="100%"  src="https://www.youtube.com/embed/7poSoylCwD0">
+                        <iframe width="100%"  src="https://youtu.be/7poSoylCwD0">
                         </iframe>
                       </div> :""
                       }
@@ -704,6 +704,7 @@ alert("Marketing information updated");
               </Container>
             </Tab>
           
+              */ }
             <Tab eventKey="jumpstart" title="2: JUMP START" disabled={statusCode < 2}>
               <Container>    
               <div class="jumpstart-tab">   
@@ -902,7 +903,7 @@ alert("Marketing information updated");
                       />
                       {isVideoOneON ? <div class="lead-sidebar card">
                         <span class='description'>Please click on the video1 to watch the fundamentals of starting mobile dentistry</span>
-                        <iframe width="100%"  src="https://www.youtube.com/embed/7poSoylCwD0">
+                        <iframe width="100%"  src="https://youtu.be/7poSoylCwD0">
                         </iframe>
                       </div> :""
                       }
@@ -1369,4 +1370,5 @@ alert("Marketing information updated");
 
 
 //export default LeadsApp;
+// <AmplifySignOut /> 
 export default withAuthenticator(LeadsApp)
